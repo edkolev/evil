@@ -34,4 +34,4 @@ install:
 script:
   - emacs=$EMACS make test
 
-# ci trigger 7
+# ci trigger 8
