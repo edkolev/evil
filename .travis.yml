@@ -10,7 +10,7 @@ env:
   - EMACS_VERSION=24.5
   - EMACS_VERSION=25.1
   - EMACS_VERSION=25.2
-  # - EMACS_VERSION=master
+  - EMACS_VERSION=master
   # allow_failures:
   #   - env: EMACS_VERSION=25.1
     # - env: EMACS_VERSION=master
@@ -18,6 +18,7 @@ env:
 matrix:
   allow_failures:
     - env: EMACS_VERSION=25.1
+    - env: EMACS_VERSION=master
 
 # NOTE: flyspell test
 addons:
@@ -35,4 +36,4 @@ install:
 script:
   - emacs=$EMACS make test
 
-# ci trigger 2
+# ci trigger 3
