@@ -11,9 +11,6 @@ env:
   - EMACS_VERSION=25.1
   - EMACS_VERSION=25.2
   - EMACS_VERSION=master
-  # allow_failures:
-  #   - env: EMACS_VERSION=25.1
-    # - env: EMACS_VERSION=master
 
 matrix:
   allow_failures:
@@ -36,4 +33,4 @@ install:
 script:
   - emacs=$EMACS make test
 
-# ci trigger 4
+# ci trigger 5
