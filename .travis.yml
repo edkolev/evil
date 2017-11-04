@@ -14,8 +14,9 @@ env:
 
 matrix:
   allow_failures:
-    - env: EMACS_VERSION=25.1
     - env: EMACS_VERSION=master
+    # Emacs 25.1 segfaults when running make test
+    - env: EMACS_VERSION=25.1
 
 # NOTE: flyspell test
 addons:
@@ -33,4 +34,4 @@ install:
 script:
   - emacs=$EMACS make test
 
-# ci trigger 5
+# ci trigger 6
