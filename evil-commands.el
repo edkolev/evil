@@ -778,17 +778,28 @@ The current position is placed in the jump list."
     (evil-set-jump pnt)))
 
 (evil-define-motion evil-jump-to-tag (arg)
-  "Jump to tag under point.
+    "Jump to tag under point.
 If called with a prefix argument, provide a prompt
 for specifying the tag."
-  :jump t
-  (interactive "P")
-  (if arg (call-interactively #'find-tag)
-    (let ((tag (funcall (or find-tag-default-function
-                            (get major-mode 'find-tag-default-function)
-                            #'find-tag-default))))
-      (unless tag (user-error "No tag candidate found around point"))
-      (find-tag tag))))
+    :jump t
+    (interactive "P")
+    (let ((xref-prompt-for-identifier arg))
+      (call-interactively #'xref-find-definitions)))
+
+(with-no-warnings
+  (when (version< emacs-version "25.1")
+      (evil-define-motion evil-jump-to-tag (arg)
+        "Jump to tag under point.
+If called with a prefix argument, provide a prompt
+for specifying the tag."
+        :jump t
+        (interactive "P")
+        (if arg (call-interactively #'find-tag)
+          (let ((tag (funcall (or find-tag-default-function
+                                  (get major-mode 'find-tag-default-function)
+                                  #'find-tag-default))))
+            (unless tag (user-error "No tag candidate found around point"))
+            (find-tag tag))))))
 
 (evil-define-motion evil-lookup ()
   "Look up the keyword at point.
